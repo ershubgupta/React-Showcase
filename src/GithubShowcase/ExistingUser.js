@@ -7,7 +7,7 @@ function ExistingUser(props) {
     <>
       {props.isUser ? 
         <Toast delay={3000} autohide onClose={() => currmsg(false)} style={{position:'fixed', bottom: '20px', right:'0'}}>
-          <Toast.Header closeButton={false}><strong>User is already present in the below list.</strong></Toast.Header> 
+          <Toast.Header closeButton={false}><strong>User is already listed.</strong></Toast.Header> 
         </Toast> 
       :''}
     </>

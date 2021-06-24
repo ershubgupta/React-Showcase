@@ -26,10 +26,11 @@ export class SearchForm extends Component {
 
   handlSubmit = async (e) => {
     e.preventDefault();
-    console.log(this.state.username.trim().length)
-    let len = this.state.username.trim().length
+    let user = this.state.username.trim()
+    console.log(user.length)
+    let len = user.length
     if (len !== 0) {
-      await axios.get(`https://api.github.com/users/${this.state.username}`)
+      await axios.get(`https://api.github.com/users/${user}`)
         .then(resp => {
           this.props.addUser(resp.data);
           this.setState({username: '', isAlert: false});
