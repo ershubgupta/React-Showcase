@@ -26,16 +26,19 @@ export class SearchForm extends Component {
 
   handlSubmit = async (e) => {
     e.preventDefault();
-    // console.log(this.state.username)
-    await axios.get(`https://api.github.com/users/${this.state.username}`)
-                            .then(resp => {
-                              this.props.addUser(resp.data);
-                              this.setState({username: '', isAlert: false});
-                              // console.log(resp.data)
-                            })
-                            .catch(error => {
-                              this.setState({isAlert: true });
-                            });
+    console.log(this.state.username.trim().length)
+    let len = this.state.username.trim().length
+    if (len !== 0) {
+      await axios.get(`https://api.github.com/users/${this.state.username}`)
+        .then(resp => {
+          this.props.addUser(resp.data);
+          this.setState({username: '', isAlert: false});
+          // console.log(resp.data)
+        })
+        .catch(error => {
+          this.setState({isAlert: true });
+        });
+    }
   }
   render() {
     return (
