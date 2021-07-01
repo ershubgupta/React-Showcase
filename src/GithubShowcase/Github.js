@@ -26,13 +26,12 @@ export class Github extends Component {
         profiles: [...prevState.profiles, userProfile],
         listedUser: false
       }));
-    }
-    
+    }    
   }
   
   render() {
     return (
-      <Container className="my-4">
+      <Container>
         <Row>
           <Col xs={12} className="text-center">
             <h2 className="mb-3">Github User's profile</h2>

@@ -64,7 +64,7 @@ export class SearchForm extends Component {
         </Row>
         <Row>
           <Col>
-            <Form.Text muted className="text-left">Try by typing these usernames: gaearon, sophiebits, sebmarkbage, bvaughn or may be your's</Form.Text>
+            <Form.Text muted className="text-left">Try by typing these usernames: gaearon, sophiebits, ershubgupta or may be your's</Form.Text>
           </Col>
         </Row>
         {this.state.isAlert ? 
