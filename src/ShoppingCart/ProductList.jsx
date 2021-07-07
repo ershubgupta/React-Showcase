@@ -3,42 +3,63 @@ import React, { useState } from "react";
 import { Button, Card, Col, Image, Pagination, Row } from "react-bootstrap";
 import Loader from "../Loader";
 import ProductCard from "./ProductCard";
-import { ProductFilter, FilterByCategory } from "./ProductFilter";
+import { ProductSortingByPrice, FilterByCategory } from "./ProductFilter";
 import useFetch from "./Services/useFetch";
 
 // import ProductDetail from "./ProductDetail"
 
 export default function ProductList(props) {
-  const [list, setList] = useState('products')
-  const { data: product, error, loading } = useFetch(list);
+  const [list, setList] = useState("products");
+  const [sort, setSort] = useState('');
+
+  let url = sort !== "" ? "?sort="+sort : "";
+
+  const {
+    data: product,
+    error,
+    loading,
+  } = useFetch(list+url);
 
   function selectCategory(catgry) {
     setList(catgry);
     // this.props.category = catgry;
   }
 
-  function loadNextList () {
+  function loadNextList() {
     // setList(`products?limit=9 + `);
   }
-  function cartItem () {
-    
-  }
+  function cartItem() {}
 
-  if (error) throw error
+  if (error) throw error;
   if (loading) return <Loader />;
 
   return (
     <>
+      <Row className="align-items-center">
+        <Col xs={4}>
+          <FilterByCategory
+            getCategory={props.getCategory}
+            selectCategory={selectCategory}
+          />
+        </Col>
+        <Col xs={4}>
+          <ProductSortingByPrice getSorting={(e) => setSort(e)} />
+        </Col>
+        <Col xs={4}>Total Items: {product.length}</Col>
+      </Row>
       <Row>
-        <Col xs={12}>Total Items: {product.length}</Col>
-        {/* <Col xs={12}>In cart: </Col> */}
-        <FilterByCategory
-          category={props.category}
-          selectCategory={selectCategory}
-        />
-        {product.map((e) => (
-          <ProductCard key={e.id} productdetails={e} cartItem={cartItem} />
-        ))}
+        <Col xs={12} className="my-5">
+          <Row>
+            {product.map((e) => (
+              <ProductCard
+                getcart={props.getcart}
+                key={e.id}
+                productdetails={e}
+                updateCart={props.updateCart}
+              />
+            ))}
+          </Row>
+        </Col>
         {/* <Pagination>
           <Pagination.First />
           <Pagination.Prev />

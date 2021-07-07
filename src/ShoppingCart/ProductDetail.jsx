@@ -5,7 +5,7 @@ import Loader from '../Loader';
 import AddToCart from './AddToCart';
 import useFetch from './Services/useFetch';
 
-export default function ProductDetail() {
+export default function ProductDetail(props) {
   const {id} = useParams();
   console.log(`products/${id}`);
   const { data: product, error, loading } = useFetch(`products/${id}`);
@@ -27,15 +27,19 @@ export default function ProductDetail() {
           <p className="mb-4">{product.description}</p>
           <p>Price: ${product.price}</p>
           <Row>
-            <Col xs="3">
+            {/* <Col xs="3">
               <InputGroup className="mb-2">
                 <InputGroup.Text>-</InputGroup.Text>
                 <FormControl placeholder="0" className="text-center" />
                 <InputGroup.Text>+</InputGroup.Text>
               </InputGroup>
-            </Col>
+            </Col> */}
             <Col>
-              <AddToCart productDetails={product} />
+              <AddToCart
+                productDetails={product}
+                updateCart={props.updateCart}
+                getcart={props.getcart}
+              />
             </Col>
           </Row>
         </Col>

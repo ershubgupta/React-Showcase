@@ -1,66 +1,82 @@
-import React from 'react'
-import { Col, Form } from "react-bootstrap";
-import useFetch from './Services/useFetch';
+import React, { useState } from "react";
+import { Col, DropdownButton, Form } from "react-bootstrap";
+import useFetch from "./Services/useFetch";
 
-export function ProductFilter() {
+export function ProductSortingByPrice(props) {
+  
+  const onSortChange = (e) => {
+      e.target.value !== ""
+        ? props.getSorting(e.target.value)
+        : props.getSorting('');
+    //  console.log(e.target.value);
+    //  categories.includes(e.target.value)
+    //    ? props.selectCategory("products/category/" + e.target.value)
+    //    : props.selectCategory("products");
+    //  props.getCategory(e.target.value);
+    // props.getSorting(e.target.value);
+  }
   return (
-    <Col xs={12}>
-      <Form>
-        <Form.Group>
-          <Form.Label>Filter:</Form.Label>
-          <Form.Control as="select" custom>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Form.Control>
-        </Form.Group>
-      </Form>
-    </Col>
+    <Form>
+      <Form.Group className="mb-0">
+        <Form.Row className="align-items-center">
+          <Form.Label className="mb-0">Sort By ID:</Form.Label>
+          <Col>
+            <Form.Control
+              as="select"
+              custom
+              className="text-capitalize"
+              onChange={onSortChange}
+            >
+              <option value="">None</option>
+              <option value="asc">High to Low</option>
+              <option value="desc">Low to High</option>
+            </Form.Control>
+          </Col>
+        </Form.Row>
+      </Form.Group>
+    </Form>
   );
 }
 
-
 export function FilterByCategory(props) {
-  const {data:categories, error, loading} = useFetch("products/categories");
+  const { data: categories, error, loading } = useFetch("products/categories");
 
-
-// Check for selected value is present in the categories then show category product else show all
+  // Check for selected value is present in the categories then show category product else show all
   const onValueChange = (e) => {
     console.log(e.target.value, categories.includes(e.target.value));
     categories.includes(e.target.value)
       ? props.selectCategory("products/category/" + e.target.value)
       : props.selectCategory("products");
-  }
-  
-if (error) throw error;
-// if (loading) return <Spinner />;
+    props.getCategory(e.target.value);
+  };
+
+  if (error) throw error;
+  // if (loading) return <Spinner />;
   return (
-    <Col xs={12}>
-      <Form>
-        <Form.Group>
-          <Form.Label>Filter:</Form.Label>
-          <Form.Control
-            as="select"
-            custom
-            className="text-capitalize"
-            onChange={onValueChange}
-          >
-            <option defaultValue>
-              Show all
-            </option>
-            {categories !== null
-              ? categories.map((c) => (
-                  <option key={c} value={c}>
-                    {c}
-                  </option>
-                ))
-              : ""}
-          </Form.Control>
-        </Form.Group>
-      </Form>
-    </Col>
+    <Form>
+      <Form.Group className="mb-0">
+        <Form.Row className="align-items-center">
+          <Form.Label className="mb-0">Filter By Category:</Form.Label>
+          <Col>
+            <Form.Control
+              as="select"
+              custom
+              className="text-capitalize"
+              onChange={onValueChange}
+            >
+              <option defaultValue>Show all</option>
+              {categories !== null
+                ? categories.map((c) => (
+                    <option key={c} value={c}>
+                      {c}
+                    </option>
+                  ))
+                : ""}
+            </Form.Control>
+          </Col>
+        </Form.Row>
+      </Form.Group>
+    </Form>
   );
 }
 

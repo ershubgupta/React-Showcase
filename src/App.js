@@ -17,9 +17,8 @@ function App() {
             <Col xs={12} className="my-4">
               <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/github-cards" component={Github}/>
-                <Route exact path="/shopping-cart/products/:id" component={ProductDetail}/>
-                <Route exact path="/shopping-cart" component={ShoppingCart}/>
+                <Route path="/github-cards" component={Github}/>                
+                <Route path="/shopping-cart" component={ShoppingCart}/>
                 <Route path="/todo-app" component={ToDo}/>
               </Switch>
             </Col>
