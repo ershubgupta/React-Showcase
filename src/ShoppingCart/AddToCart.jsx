@@ -1,8 +1,7 @@
 import { Button } from 'react-bootstrap';
-import React, { useState } from 'react'
+import React from 'react'
 
 export default function AddToCart(props) {
-  // const [btnstate, setBtnState] = useState(false)
   function addToCart(prodDetail, updateCart) {
     console.log(prodDetail);
     props.getcart(prodDetail);

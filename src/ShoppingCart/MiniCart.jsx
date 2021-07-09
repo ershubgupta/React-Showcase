@@ -5,8 +5,6 @@ export default function MiniCart(props) {
   return (
     <Button variant="dark">
       In Cart
-      {/* {"herer" + props.setCart}
-      {props.setCart === null} */}
       {props.setCart !== null &&
       props.setCart !== undefined &&
       props.setCart !== "" ? (

@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Modal, Row } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 
 export default function Address(props) {
-  // const {updatedUserDetails } = props;
   const addressProps = Object.assign({}, props);
   delete addressProps.updatedDetails;
-  const [userInfo, setUserInfo] = useState([]);
+  delete addressProps.userDetials;
+  
+  const [userInfo, setUserInfo] = useState(props.userDetials);
+  const [error, setError] = useState(true);
+
   const formFields = [
     {
       field_name: "Name",
@@ -24,31 +27,29 @@ export default function Address(props) {
       field_id: "address",
     },
   ];
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // setUserInfo((i) => [...i, (info[event.target.id] = event.target.value)]);
-    // setUserInfo((arr) => [...arr, `${arr.length}`]);
     addressProps.onHide(true);
-    console.log(userInfo);
+    localStorage.setItem("User_Info", JSON.stringify(userInfo));
     props.updatedDetails(userInfo);
-    // console.log(info);
+    setError(true);
   };
 
   const onValueChange = (event) => {
-    setUserInfo((arr) => ([ ...arr, [event.target.id]= event.target.value]));
-    // console.log(userInfo);
-    // console.log(event.target.value);
-    // console.log(event.target.id);
-    // setUserInfo((i) => console.log(i.info['name']));
-    // setUserInfo((i) => console.log(Object.keys(i.info)));
-    // console.log(info);
+    if (event.target.value === "") {
+      setError(true);
+    } else {
+      setError(false);
+      setUserInfo({ ...userInfo, [event.target.name]: event.target.value });
+    }
   };
   return (
     <>
       <Modal {...addressProps} aria-labelledby="contained-modal-title-vcenter">
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-            Update User Information
+            Update Your Information
           </Modal.Title>
         </Modal.Header>
         <Modal.Body className="show-grid">
@@ -58,9 +59,12 @@ export default function Address(props) {
                 <Form.Label>{field.field_name}</Form.Label>
                 <Form.Control
                   type="text"
-                  // ref={React.createRef}
+                  name={field.field_id}
                   onChange={onValueChange}
-                  placeholder={"Please enter your " + field.field_name}
+                  placeholder={
+                    userInfo[field.field_id] ??
+                    "Please enter your " + field.field_name
+                  }
                   style={{ fontSize: "90%" }}
                 />
               </Form.Group>
@@ -68,18 +72,15 @@ export default function Address(props) {
             <Form.Group>
               <Button
                 type="submit"
-                // onClick={props.onHide}
+                onClick={props.onHide}
+                disabled={error}
+                className={error ? "btn-secondary" : ""}
               >
-                Sign in
+                Update
               </Button>
-              {/* <Col sm={{ span: 10, offset: 2 }}>
-              </Col> */}
             </Form.Group>
           </Form>
         </Modal.Body>
-        {/* <Modal.Footer>
-          <Button onClick={props.onHide}>Update</Button>
-        </Modal.Footer> */}
       </Modal>
     </>
   );

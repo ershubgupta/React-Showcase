@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Col, DropdownButton, Form } from "react-bootstrap";
+import React from "react";
+import { Col, Form } from "react-bootstrap";
+import Loader from "../Loader";
 import useFetch from "./Services/useFetch";
 
 export function ProductSortingByPrice(props) {
@@ -8,12 +9,6 @@ export function ProductSortingByPrice(props) {
       e.target.value !== ""
         ? props.getSorting(e.target.value)
         : props.getSorting('');
-    //  console.log(e.target.value);
-    //  categories.includes(e.target.value)
-    //    ? props.selectCategory("products/category/" + e.target.value)
-    //    : props.selectCategory("products");
-    //  props.getCategory(e.target.value);
-    // props.getSorting(e.target.value);
   }
   return (
     <Form>
@@ -43,7 +38,6 @@ export function FilterByCategory(props) {
 
   // Check for selected value is present in the categories then show category product else show all
   const onValueChange = (e) => {
-    console.log(e.target.value, categories.includes(e.target.value));
     categories.includes(e.target.value)
       ? props.selectCategory("products/category/" + e.target.value)
       : props.selectCategory("products");
@@ -51,7 +45,7 @@ export function FilterByCategory(props) {
   };
 
   if (error) throw error;
-  // if (loading) return <Spinner />;
+  // if (loading) return <Loader />;
   return (
     <Form>
       <Form.Group className="mb-0">
@@ -80,4 +74,3 @@ export function FilterByCategory(props) {
   );
 }
 
-// export default ProductFilter

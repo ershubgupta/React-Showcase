@@ -4,7 +4,6 @@ import {
   Badge,
   Button,
   Col,
-  Form,
   Image,
   Row,
   Toast,
@@ -12,37 +11,41 @@ import {
   ToastHeader,
 } from "react-bootstrap";
 import Address from "./Address";
+import UserDetail from "./UserDetail";
+import OrderSummary from "./OrderSummary";
 
 export default function Cart(props) {
   const [productList, setProductList] = useState([]);
   const [cartPrize, setCartPrize] = useState([0]);
   const [paymentAmount, setPaymentAmount] = useState(0);
-  const [userDetials, setUserDetials] = useState([]);
+  const [userDetials, setUserDetials] = useState(() => {
+    try {
+      return JSON.parse(localStorage.getItem("User_Info")) ?? [];
+    } catch {
+      return "there is some error";
+    }
+  });
   const [userDetialsModal, setUserDetialsModal] = useState(false);
+  const [orderStatus, setOrderStatus] = useState(false);
 
+  const { addedInCart, resetCart } = props;
   useEffect(() => {
-    setProductList(props.addedInCart);
-    // setCartPrize((currVal) => [...currVal, productList.map((i) => i.price)]);
+    setProductList(addedInCart);
     setCartPrize(productList.map((i) => i.price));
     const amount =
       productList.map((i) => i.price).length > 0
         ? productList.map((i) => i.price).reduce((total, num) => total + num)
         : 0;
     setPaymentAmount(amount);
-
-    // console.log(amount);
-    // console.log(productList.map((i) => i.price));
-    // console.log(amount.reduce((total, num) => total + num));
-    return () => {
-      setProductList(props.addedInCart);
-    };
-  }, [props.addedInCart, productList, setPaymentAmount]);
+  }, [addedInCart, productList, setPaymentAmount, orderStatus]);
 
   const updatedUserDetails = (info) => {
     setUserDetials(info);
-    console.log(info)
-    // console.log(userDetials)
-  }
+  };
+  const orderConfirmation = () => {
+    setOrderStatus(true);
+    resetCart([]);
+  };
 
   const box_shadown = {
     // boxShadow: "0 0 1px 1px #00000026",
@@ -53,66 +56,81 @@ export default function Cart(props) {
     <>
       <Row>
         <Col md={8}>
-          <Row>
-            {productList === null ||
-            productList === undefined ||
-            productList.length < 1 ? (
-              <Col xs={12} md={6}>
-                <h4>Your cart is Empty.</h4>
+          {orderStatus ? (
+            <Row>
+              <Col>
+                <h3 className="text-center">Thanks for shopping with us.</h3>
+                <h5 className="text-center mb-3">
+                  Your order is booked and we will deliver your order on below
+                  Address
+                </h5>
+                <Toast className="mx-auto">
+                  <ToastBody>{userDetials.address}</ToastBody>
+                </Toast>
               </Col>
-            ) : (
-              <>
-                {productList.map((list) => (
-                  <Col
-                    sm={6}
-                    key={list.id}
-                    style={box_shadown}
-                    className="mb-3"
-                  >
-                    <Toast>
-                      <ToastBody>
-                        <Row className="align-items-center">
-                          <Col sm={4} md={2}>
-                            <Image
-                              src={list.image}
-                              rounded
-                              className="img-fluid"
-                            />
-                          </Col>
-                          <Col>
-                            <Link
-                              to={`products/${list.id}`}
-                              className="text-dark"
-                            >
-                              <h6>{list.title}</h6>
-                              <Badge
-                                variant="info"
-                                className="text-capitalize mr-2"
+            </Row>
+          ) : (
+            <Row>
+              {productList === null ||
+              productList === undefined ||
+              productList.length < 1 ? (
+                <Col xs={12} md={6}>
+                  <h4>Your Cart is Empty.</h4>
+                </Col>
+              ) : (
+                <>
+                  {productList.map((list) => (
+                    <Col
+                      sm={6}
+                      key={list.id}
+                      style={box_shadown}
+                      className="mb-3"
+                    >
+                      <Toast>
+                        <ToastBody>
+                          <Row className="align-items-center">
+                            <Col sm={4} md={2}>
+                              <Image
+                                src={list.image}
+                                rounded
+                                className="img-fluid"
+                              />
+                            </Col>
+                            <Col>
+                              <Link
+                                to={`products/${list.id}`}
+                                className="text-dark"
                               >
-                                {list.category}
-                              </Badge>
-                              <Badge
-                                variant="secondary"
-                                className="text-capitalize"
-                              >
-                                Price: ${list.price}
-                              </Badge>
-                            </Link>
-                          </Col>
-                        </Row>
-                        {/* <hr className="hr" /> */}
-                      </ToastBody>
-                    </Toast>
-                  </Col>
-                ))}
-              </>
-            )}
-          </Row>
+                                <h6>{list.title}</h6>
+                                <Badge
+                                  variant="info"
+                                  className="text-capitalize mr-2"
+                                >
+                                  {list.category}
+                                </Badge>
+                                <Badge
+                                  variant="secondary"
+                                  className="text-capitalize"
+                                >
+                                  Price: ${list.price}
+                                </Badge>
+                              </Link>
+                            </Col>
+                          </Row>
+                          {/* <hr className="hr" /> */}
+                        </ToastBody>
+                      </Toast>
+                    </Col>
+                  ))}
+                </>
+              )}
+            </Row>
+          )}
         </Col>
         <Col md={4}>
           <Toast>
             <ToastHeader closeButton={false}>
-              <b className="mr-auto">Delivery Address:</b>
+              <h5 className="mr-auto">User Info:</h5>
               <Button
                 size="sm"
                 variant="warning"
@@ -121,46 +139,36 @@ export default function Cart(props) {
                 Edit
               </Button>
               <Address
-                // show={userDetialsModal}
                 show={userDetialsModal}
                 onHide={() => setUserDetialsModal(false)}
+                userDetials={userDetials}
                 updatedDetails={updatedUserDetails}
               />
             </ToastHeader>
             <ToastBody>
-              <p>Name:{userDetials}</p>
-              <p>Address</p>
-              {cartPrize.length > 0 ? (
-                <Button variant="success" size="sm" className="mb-3 ml-auto">
-                  Checkout
-                </Button>
-              ) : (
-                ""
-              )}
+              <UserDetail userDetials={userDetials} />
             </ToastBody>
           </Toast>
 
-          <Toast>
-            <ToastHeader closeButton={false}>
-              <b>Order Summary</b>
-            </ToastHeader>
-            <ToastBody>
-              <p>
-                Cart Value: <Badge variant="success">${paymentAmount}</Badge>
-              </p>
-              <p>
-                Delivery Charges:{" "}
-                <Badge variant="primary">${cartPrize.length > 0 ? 5 : 0}</Badge>
-              </p>
-              <hr className="hr" />
-              <p className="mb-0">
-                Amount to Be Paid:
-                <Badge variant="info">
-                  ${cartPrize.length > 0 ? paymentAmount + 5 : 0}
-                </Badge>
-              </p>
-            </ToastBody>
-          </Toast>
+          <OrderSummary
+            cartPrize={cartPrize}
+            paymentAmount={paymentAmount}
+            orderStatus={orderStatus}
+          />
+
+          {cartPrize.length > 0 ? (
+            <Button
+              variant="success"
+              size="sm"
+              className="w-100"
+              disabled={false || userDetials.length === 0}
+              onClick={orderConfirmation}
+            >
+              Click to Checkout
+            </Button>
+          ) : (
+            ""
+          )}
         </Col>
       </Row>
     </>
