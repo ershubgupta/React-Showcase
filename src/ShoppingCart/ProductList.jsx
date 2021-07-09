@@ -1,12 +1,10 @@
 // import axios from "axios";
 import React, { useState } from "react";
-import { Button, Card, Col, Image, Pagination, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import Loader from "../Loader";
 import ProductCard from "./ProductCard";
 import { ProductSortingByPrice, FilterByCategory } from "./ProductFilter";
 import useFetch from "./Services/useFetch";
-
-// import ProductDetail from "./ProductDetail"
 
 export default function ProductList(props) {
   const [list, setList] = useState("products");
