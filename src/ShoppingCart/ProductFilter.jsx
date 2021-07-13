@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Form } from "react-bootstrap";
-import Loader from "../Loader";
+import Loader from "../common/Loader";
 import useFetch from "./Services/useFetch";
 
 export function ProductSortingByPrice(props) {

@@ -1,13 +1,13 @@
 import {Switch, Route} from "react-router-dom";
 
-import Header from "./Header"
+import Header from "./common/Header"
 import Home from "./Home"
 import Github from './GithubShowcase/Github';
 import ShoppingCart from './ShoppingCart/Home';
 import ToDo from './ToDo/Todo';
 import { Col, Container, Row } from "react-bootstrap";
 // import ProductDetail from "./ShoppingCart/ProductDetail";
-import Footer from "./Footer";
+import Footer from "./common/Footer";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Badge, Col, Container, Image, Row } from 'react-bootstrap';
 import { useParams } from 'react-router'
-import Loader from '../Loader';
+import Loader from '../common/Loader';
 import AddToCart from './AddToCart';
 import useFetch from './Services/useFetch';
 
