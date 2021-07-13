@@ -12,6 +12,7 @@
 - We can add products from here to the cart.
 - Individual Product Detail Page show the complete detail of page and also allow to add product in cart.
 - Cart Page will list down all product which are selected and also show the user info & Order Summary.
+- We are using LocalStorage for storing user info and cart items.
 - Checkout button allow to place the order and post that it will reset the cart and order summary.
 - Special Thanks to [fakestoreapi](https://fakestoreapi.com/) for allowing to use there api for free for learning purpose.
 

@@ -6,7 +6,7 @@ import Github from './GithubShowcase/Github';
 import ShoppingCart from './ShoppingCart/Home';
 import ToDo from './ToDo/Todo';
 import { Col, Container, Row } from "react-bootstrap";
-import ProductDetail from "./ShoppingCart/ProductDetail";
+// import ProductDetail from "./ShoppingCart/ProductDetail";
 import Footer from "./Footer";
 
 function App() {

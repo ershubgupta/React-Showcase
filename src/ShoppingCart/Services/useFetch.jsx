@@ -5,7 +5,7 @@ export default function useFetch(url) {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  console.log('in useFetch')
+  // console.log('in useFetch')
   useEffect(() => {
     console.log(baseUrl + url);
     async function fetchData() {

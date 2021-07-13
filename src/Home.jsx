@@ -37,13 +37,21 @@ export default function Home() {
                     <li>We can Filter the product using category.</li>
                     <li>We can Sort the product Alphabetical Order.</li>
                     <li>We can add products from here to the cart.</li>
-                    <li>Individual Product Detail Page show the complete detail of page and also allow to add product in cart.</li>
                     <li>
-                      Cart Page will list down all product which are selected and also show the user info & Order Summary
+                      Individual Product Detail Page show the complete detail of
+                      page and also allow to add product in cart.
                     </li>
                     <li>
-                      Checkout button allow to place the order and post that it will reset the cart and
-                      order summary.
+                      Cart Page will list down all product which are selected
+                      and also show the user info & Order Summary
+                    </li>
+                    <li>
+                      We are using LocalStorage for storing user info and cart
+                      items.
+                    </li>
+                    <li>
+                      Checkout button allow to place the order and post that it
+                      will reset the cart and order summary.
                     </li>
                     <li>
                       Special Thanks to&nbsp;
@@ -69,8 +77,8 @@ export default function Home() {
               <p className="small font-weight-bold mt-3">
                 <i>
                   *This page is only for leaning purpose, and all the content
-                  here is Dummy data. I'm using this place to learn,
-                  practice and implement REACT JS.
+                  here is Dummy data. I'm using this place to learn, practice
+                  and implement REACT JS.
                 </i>
               </p>
             </Col>
