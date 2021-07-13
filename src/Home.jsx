@@ -62,7 +62,7 @@ export default function Home() {
                 <li>
                   <b>Todo App:</b>
                   <ul>
-                    <li>Coming Soon:</li>
+                    <li>Coming Soon.</li>
                   </ul>
                 </li>
               </ul>
