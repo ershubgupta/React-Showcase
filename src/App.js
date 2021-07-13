@@ -7,12 +7,13 @@ import ShoppingCart from './ShoppingCart/Home';
 import ToDo from './ToDo/Todo';
 import { Col, Container, Row } from "react-bootstrap";
 import ProductDetail from "./ShoppingCart/ProductDetail";
+import Footer from "./Footer";
 
 function App() {
   return (
     <div className="App">
-      < Header/>
-        <Container>
+        <Header/>
+        <Container className="min-vh-100">
           <Row>
             <Col xs={12} className="my-4">
               <Switch>
@@ -24,6 +25,7 @@ function App() {
             </Col>
           </Row>
         </Container>
+        <Footer/>
     </div>
   );
 }

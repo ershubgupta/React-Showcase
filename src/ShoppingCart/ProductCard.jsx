@@ -17,6 +17,7 @@ export default function ProductCard(props) {
             <h6>{productDetails.title}</h6>
           </Link>
           <p>Price: {productDetails.price}$</p>
+          {/* {productDetails.qunatity} */}
           <AddToCart
             updateCart={props.updateCart}
             getcart={props.getcart}

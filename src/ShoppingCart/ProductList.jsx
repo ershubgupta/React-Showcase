@@ -8,15 +8,11 @@ import useFetch from "./Services/useFetch";
 
 export default function ProductList(props) {
   const [list, setList] = useState("products");
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState("");
 
-  let url = sort !== "" ? "?sort="+sort : "";
+  let url = sort !== "" ? "?sort=" + sort : "";
 
-  const {
-    data: product,
-    error,
-    loading,
-  } = useFetch(list+url);
+  const { data: product, error, loading } = useFetch(list + url);
 
   function selectCategory(catgry) {
     setList(catgry);
@@ -24,7 +20,13 @@ export default function ProductList(props) {
 
   if (error) throw error;
   if (loading) return <Loader />;
-
+  // for (let i=0; i<Object.keys(product).length; i++) {
+  //     // product[i]["quantity"]
+  //   }
+  // product.map((i) => (!i.hasOwnProperty("qunatity") ? i["quantity"] = 0 : ''));
+  product.map((i) => (i["quantity"] = 0));
+  // console.log(product);
+    // console.log(product[i].hasOwnProperty("quantity"));
   return (
     <>
       <Row className="align-items-center">
