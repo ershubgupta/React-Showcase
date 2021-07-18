@@ -1,0 +1,85 @@
+.form-active .overlay {
+  background-color: rgb(0 0 0 / 67%);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
+
+.form-active form.task-form {
+  z-index: 2;
+  /* position: relative; */
+}
+.task-form .form-control {
+  border: 0 none !important;
+  /* padding: .375rem 0rem !important; */
+}
+.task-form .form-text {
+  padding-left: 0.8rem;
+  color: #9b9b9b;
+}
+
+.form-disabled form.task-form .toast {
+  height: 47px;
+  overflow: hidden;
+  transition: all linear 0.3s;
+}
+
+.form-disabled form.task-form .take-desc {
+  transform: translateY(-56px);
+  transition: all linear 0.2s;
+}
+
+form.task-form .toast {
+  background-color: #fff;
+}
+.form-active form.task-form .toast {
+  height: 256px;
+  transition: all linear 0.3s;
+}
+
+.form-active form.task-form .take-desc {
+  transform: translateY(0px);
+  transition: all linear 0.2s;
+}
+
+/* .form-disabled form {
+  position: relative;
+} */
+
+form.task-form {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.task-container {
+  margin-top: 75px;
+}
+
+form.task-form input:focus {
+  outline: 0 none;
+  box-shadow: 0 0 0 0 !important;
+  border-bottom: 1px solid #28a745 !important;
+  border-radius: 0;
+}
+
+.task-grid .bg-light-primary{
+  background-color: #86c0ff !important;
+}
+.task-grid .bg-light-success {
+  background-color: #9eedb0 !important;
+}
+.task-grid .bg-light-secondary {
+  background-color: #ccc !important;
+}
+.task-grid .bg-light-done {
+  opacity: 0.5;
+}
+.task-grid td {
+  vertical-align: middle !important;
+}

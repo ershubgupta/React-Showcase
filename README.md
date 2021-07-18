@@ -17,6 +17,12 @@
 - Special Thanks to [fakestoreapi](https://fakestoreapi.com/) for allowing to use there api for free for learning purpose.
 
 ## Todo App:
-- Coming Soon.
+- Implemented the ToDo app, which have following features.
+- User can add Title, Description and label to the task.
+- Newly aaded task will be listed under Pending Task and from here user can move the task to Inprogress -> Completed -> Remove/Pending.
+- There is a provision to updated the task as well.
+- There are two option of task view (Grid and List).
+- Under List view all the task will list done and will have all the same functionality as we have in Grid view.
+- Moreover in List view user can see all the tasks that are removed.
 
 ###### *This page is only for leaning purpose, and all the content here is Dummy data. I'm using this place to learn, practice and implement REACT JS.

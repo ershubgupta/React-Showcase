@@ -70,7 +70,27 @@ export default function Home() {
                 <li>
                   <b>Todo App:</b>
                   <ul>
-                    <li>Coming Soon.</li>
+                    <li>
+                      Implemented the ToDo app, which have following features.
+                    </li>
+                    <li>
+                      User can add Title, Description and label to the task.
+                    </li>
+                    <li>
+                      Newly aaded task will be listed under Pending Task and
+                      from here user can move the task to Inprogress ->
+                      Completed -> Remove/Pending.
+                    </li>
+                    <li>There is a provision to updated the task as well.</li>
+                    <li>There are two option of task view (Grid and List).</li>
+                    <li>
+                      Under List view all the task will list done and will have
+                      all the same functionality as we have in Grid view.
+                    </li>
+                    <li>
+                      Moreover in List view user can see all the tasks that are
+                      removed.
+                    </li>
                   </ul>
                 </li>
               </ul>
