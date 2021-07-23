@@ -1,6 +1,6 @@
 import React from "react";
-import TaskCard from "./TaskCard";
-import TaskCardPlaceholder from "./TaskCardPlaceholder";
+import TaskCard from "./TaskCardGridView";
+import {TaskCardPlaceholder} from "./TaskCardPlaceholder";
 
 export default function PendingTask(props) {
   // console.log(props.setPendingTask.length);

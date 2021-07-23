@@ -4,7 +4,7 @@ import CompletedTask from './CompletedTask';
 import TodoForm from './TodoForm';
 import InprogressTask from './InprogressTask';
 import PendingTask from './PendingTask';
-import TaskCardGrid from './TaskCardGrid';
+import TaskCardListView from "./TaskCardListView";
 import "./formStyling.css"; 
 
 export default function Home() {
@@ -223,7 +223,7 @@ export default function Home() {
             </>
           ) : (
             <Col>
-              <TaskCardGrid list={taskList} taskID={u1TaskID} />
+              <TaskCardListView list={taskList} taskID={u1TaskID} />
             </Col>
           )}
         </Row>

@@ -1,18 +1,16 @@
-import React , {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Col, Form, Row, Toast } from "react-bootstrap";
-// import Labels from "./Labels";
 
 export default function TodoForm(props) {
   let labelarr;
   const [task, setTask] = useState([]);
-  // const [isFormActive, setIsFormActice] = useState(false);
-  // const [taskList, setTaskList] = useState([]);
   const [isFormValid, setIsFormValid] = useState(false);
-  
+
   const resetForm = () => {
-    Array.from(document.querySelectorAll("input")).forEach(
-      (input) => (input.value = "")
-    );
+    Array.from(document.querySelectorAll("input")).forEach(function (ele) {
+      ele.value = "";
+      ele.blur();
+    });
   };
 
   let isFormActive = false;
@@ -20,119 +18,56 @@ export default function TodoForm(props) {
     isFormActive = true;
     return props.formStatus(isFormActive);
   };
-  
+
   const onCancel = () => {
     resetForm();
     isFormActive = false;
     return props.formStatus(isFormActive);
   };
   const onSubmit = (e) => {
-    // if (task.title) {
-
-    // }
-    //  console.log(props.taskID);
     e.preventDefault();
-    // setTaskList([...taskList, task]);
-    // console.log({...task, ['category']:'todo'})
-    // props.getTaskList({ ...task, ["category"]: "todo" });
-    // console.log(labelarr)
-    // console.log(labelarr.split(","));
-    labelarr = labelarr ?? ''
+    labelarr = labelarr ?? "";
     const currentdate = new Date();
-    const generateDate = currentdate.getDate() + "/"
-                + (currentdate.getMonth()+1)  + "/" 
-                + currentdate.getFullYear() + " @ "  
-                + currentdate.getHours() + ":"  
-                + currentdate.getMinutes();
-      // date.getDate() +
-      // "/" +
-      // date.getMonth() +
-      // "/" +
-      // date.getFullYear() +
-      // "/" +
-      props.getTaskList({
-        // todo: {
-        id: props.setTaskID,
-        title: task.title,
-        desc: task.desc,
-        label: labelarr.split(","),
-        category: "pending",
-        created: generateDate,
-        // },
-      });
+    const generateDate =
+      currentdate.getDate() +
+      "/" +
+      (currentdate.getMonth() + 1) +
+      "/" +
+      currentdate.getFullYear() +
+      " @ " +
+      currentdate.getHours() +
+      ":" +
+      currentdate.getMinutes();
+    props.getTaskList({
+      // todo: {
+      id: props.setTaskID,
+      title: task.title,
+      desc: task.desc,
+      label: labelarr.split(","),
+      category: "pending",
+      created: generateDate,
+      // },
+    });
     setTask([]);
-    // setTaskList([...taskList, { task }]);
-    // console.log(task.title);
-    // setTaskList({...taskList, ...task });
-    // setTaskList((state) => ({
-    //   ...state,
-    //   task
-    // }));
-   resetForm();
-    labelarr='';
-     isFormActive = false;
-     return props.formStatus(isFormActive);
-    // console.log(task);
-    // console.log(taskList);
-  }
+    resetForm();
+    labelarr = "";
+    isFormActive = false;
+    return props.formStatus(isFormActive);
+  };
 
-  
-  
   const onChange = (e) => {
-    // setTask({ ...task, [e.target.name]: e.target.value});
-    if(e.target.type === "text") {
-      setTask({ ...task, [e.target.name]: e.target.value});
+    if (e.target.type === "text") {
+      setTask({ ...task, [e.target.name]: e.target.value });
     }
+  };
 
-    // setTask((val) => if(e.target.type === "text")  { ...val, [e.target.name]: e.target.value })
-
-    // e.target.type === "text"
-    //   ? setTask({ ...task, [e.target.name]: e.target.value })
-    //   : setTask({ ...task, label: [e.target.value] });
-    // console.log(task);
-    // if ()
-    // isFormValid = e.target.attributes.hasOwnProperty("required") && e.target.value !== '' ? true : false;
-    // console.log(isFormValid);
-    // return isFormValid;
-    // console.log(
-    //   e.target.attributes.hasOwnProperty("required"),
-    //   e.target.value !== ""
-    // );
-    // setTask({
-    //   ...task,
-    //   [e.target.name]: e.target.value,
-    //   label: (e.target.type === "checkbox" ? [task.label, e.target.value] : [task.label]),
-    // });
-    // console.log(e.target.checked)
-    //  let a =
-    //    e.target.type === "text"
-    //      ? { [e.target.name]: e.target.value }
-    //      : { label: [e.target.value] };
-    // console.log(a)
-    // setTask({ ...task, a});
-    // setTask((val) => {
-    //   console.log(val.label)
-    //  return e.target.type === "text"
-    //     ? { ...val, [e.target.name]: e.target.value }
-    //     : { ...val, label: [val.label, e.target.value] };
-    // })
-    // e.target.type === "text"
-    //   ? setTask({ ...task, [e.target.name]: e.target.value })
-    //   : setTask({ ...task, label: [ e.target.value] });
-    // console.log(task);
-
-    // console.log(task);
-  }
-  
   const onLabeladd = (e) => {
-    return labelarr = e.target.value;
-    // console.log(labelarr)
-
-  }
+    return (labelarr = e.target.value);
+  };
   useEffect(() => {
-    setIsFormValid(() =>  (task.desc ?? 0) ? true : false);
+    setIsFormValid(() => (task.desc ?? 0 ? true : false));
   }, [task]);
-  
+
   return (
     <>
       {/* {taskList.map((e)=> <p>{e.title}</p>)} */}
