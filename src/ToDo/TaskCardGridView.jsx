@@ -1,17 +1,11 @@
 import React, { useState } from "react";
-import { Badge, Button, ButtonGroup, Toast } from "react-bootstrap";
+import { Badge, Toast } from "react-bootstrap";
 import { taskButtonGenerator } from "./ComFunction";
 import UpdateTask from "./UpdateTask";
 
 export default function TaskCard(props) {
    const [userDetialsModal, setUserDetialsModal] = useState(false);
   const e = props.data;
-  // const updateTask = (ele, id, status) => {
-  //   taskStatusModifier(ele, id, status, props.up3TaskID);
-  // };
-
-  // const btnList = taskButtonGenerator(e);
-  // console.log(e)
 
   return (
     <>
@@ -40,7 +34,7 @@ export default function TaskCard(props) {
               show={userDetialsModal}
               onHide={() => setUserDetialsModal(false)}
               data={e}
-              updateTask={props.up3TaskID}
+              updateTask={props.updateTask}
             />
             <p>{e.desc}</p>
             <section className="mb-2">
@@ -54,7 +48,7 @@ export default function TaskCard(props) {
             </section>
             <section className="text-right">
               <span className="align-middle">Mark: </span>
-              {taskButtonGenerator(e, props.color, props.up3TaskID)}
+              {taskButtonGenerator(e, props.color, props.updateTask)}
             </section>
           </Toast.Body>
         </Toast>

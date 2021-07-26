@@ -22,7 +22,6 @@ export const taskModifier = (ele, whatToModify, props) => {
 };
 
 export const taskButtonGenerator = (list, btnColor, prop) => {
-  // console.log(list)
   const btnList =
     list.category === "pending"
       ? ["remove", "inprogress"]

@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Button, Col, Form, Row, Toast } from "react-bootstrap";
+import React, { useContext, useEffect, useState } from "react";
+import { Button, Col, Form, Toast } from "react-bootstrap";
+import { TaskContext } from "./TaskContext";
 
 export default function TodoForm(props) {
+  const { taskList, setTaskList } =
+    useContext(TaskContext);
   let labelarr;
   const [task, setTask] = useState([]);
   const [isFormValid, setIsFormValid] = useState(false);
@@ -38,16 +41,20 @@ export default function TodoForm(props) {
       currentdate.getHours() +
       ":" +
       currentdate.getMinutes();
-    props.getTaskList({
-      // todo: {
-      id: props.setTaskID,
-      title: task.title,
-      desc: task.desc,
-      label: labelarr.split(","),
-      category: "pending",
-      created: generateDate,
-      // },
-    });
+    setTaskList((prevState) => [
+      {
+        id: taskList.length + 1,
+        title: task.title,
+        desc: task.desc,
+        label: labelarr.split(","),
+        category: "pending",
+        created: generateDate,
+      },
+      ...prevState,
+    ]);
+    console.log(taskList)
+    console.log(setTaskList)
+
     setTask([]);
     resetForm();
     labelarr = "";
@@ -70,7 +77,6 @@ export default function TodoForm(props) {
 
   return (
     <>
-      {/* {taskList.map((e)=> <p>{e.title}</p>)} */}
       <Form onSubmit={onSubmit} autoComplete="off" className="task-form">
         <Toast className="mx-auto">
           <Toast.Header className={``} closeButton={false}>
@@ -100,23 +106,6 @@ export default function TodoForm(props) {
             <Form.Text>
               You can add Multiple Lable separted by comma (,)
             </Form.Text>
-            {/* <Form.Group>
-              <Form.Label>Choose Label</Form.Label>
-              <Form.Check
-                type="checkbox"
-                label="Primary"
-                name="label"
-                value="Primary"
-                onChange={onChange}
-              />
-              <Form.Check
-                type="checkbox"
-                label="Secondary"
-                name="label 1"
-                value="Secondary"
-                onChange={onLabeladd}
-              />
-            </Form.Group> */}
             <Col xs="auto" className="mt-4 mb-2">
               <Button
                 type="submit"

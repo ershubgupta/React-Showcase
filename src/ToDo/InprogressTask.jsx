@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import TaskCard from './TaskCardGridView';
 import {TaskCardPlaceholder} from './TaskCardPlaceholder';
+import { TaskContext } from './TaskContext';
 
 export default function InprogressTask(props) {
+  const { taskList, setTaskList, inProgressTask } =
+    useContext(TaskContext);
   return (
     <div>
       <h4 className="text-center">Inprogress task</h4>
-      {props.setProgressTask.length > 0 ? (
-        props.setProgressTask.map((e) => (
+      {inProgressTask.length > 0 ? (
+        inProgressTask.map((e) => (
           <TaskCard
             key={e.id}
             color="success"
             data={e}
-            up3TaskID={props.u2TaskID}
+            updateTask={() => setTaskList([...taskList])}
             setStatus={["pending", "completed"]}
             editAllowed={true}
           />

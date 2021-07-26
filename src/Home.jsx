@@ -78,8 +78,8 @@ export default function Home() {
                     </li>
                     <li>
                       Newly aaded task will be listed under Pending Task and
-                      from here user can move the task to Inprogress ->
-                      Completed -> Remove/Pending.
+                      from here user can move the task to Inprogress {"-> "}
+                      Completed {"->"} Remove/Pending.
                     </li>
                     <li>There is a provision to updated the task as well.</li>
                     <li>There are two option of task view (Grid and List).</li>
