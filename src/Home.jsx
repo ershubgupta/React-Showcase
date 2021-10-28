@@ -93,6 +93,18 @@ export default function Home() {
                     </li>
                   </ul>
                 </li>
+                <li>
+                  <b>MeetUp:</b>
+                  <ul>
+                    <li>
+                      The Meetup page consists three pages, Home, Dashboard and Reports.
+                    </li>
+                    <li>
+                      Home page has registration form to capture the user data and POST 
+                    </li>
+                    <li></li>
+                  </ul>
+                </li>
               </ul>
               <p className="small font-weight-bold mt-3">
                 <i>

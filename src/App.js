@@ -5,6 +5,8 @@ import Home from "./Home"
 import Github from './GithubShowcase/Github';
 import ShoppingCart from './ShoppingCart/Home';
 import ToDo from './ToDo/Todo';
+import SuperHero from './SuperHeroGame/Game'
+import Meetup from './Meetup/Home'
 import { Col, Container, Row } from "react-bootstrap";
 // import ProductDetail from "./ShoppingCart/ProductDetail";
 import Footer from "./common/Footer";
@@ -18,9 +20,26 @@ function App() {
             <Col xs={12} className="my-4">
               <Switch>
                 <Route exact path="/" component={Home}/>
-                <Route path="/github-cards" component={Github}/>                
-                <Route path="/shopping-cart" component={ShoppingCart}/>
-                <Route path="/todo-app" component={ToDo}/>
+                < Route path = "/github-cards📇"
+                component = {
+                  Github
+                }
+                />                
+                < Route path = "/shopping-cart🛒"
+                component = {
+                  ShoppingCart
+                }
+                />
+                < Route path = "/todo-app📋"
+                component = {
+                  ToDo
+                }
+                />
+                < Route path = "/meetup"
+                component = {
+                  Meetup
+                }
+                />
               </Switch>
             </Col>
           </Row>
