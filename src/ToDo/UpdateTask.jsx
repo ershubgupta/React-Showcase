@@ -67,7 +67,7 @@ export default function UpdateTask(props) {
             // placeholder={taskModified.desc ?? "Take a note..."}
             onFocus={onFormFocus}
           />
-          <Form.Group classname="text-right">
+          <Form.Group className="text-right">
             <Button
               type="submit"
               onClick={props.onHide}
