@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 import { Route, Switch } from "react-router";
 import { Link } from "react-router-dom";
 import Cart from "./Cart";
-import MiniCart from "./MiniCart";
+import MiniCart from "./common/MiniCart";
 import ProductDetail from "./ProductDetail";
 import ProductList from "./ProductList";
 
@@ -21,24 +21,24 @@ export default function Home() {
   };
 
   const getcart = (cartValue, isAdded) => {
+    // console.log(isAdded);
     setCart([...cart, cartValue]);
-    console.log(isAdded);
     // if (isAdded) {
       // let devicesArray = JSON.parse(localStorage.getItem("Cart"));
 
       // console.log(devicesArray.splice(devicesArray.indexOf(prodDetail), 1));
       // devicesArray.splice(devicesArray.indexOf(prodDetail), 1);
       // cart.filter((e) => console.log(e.id, cartValue.id));
-      if (cart.filter((e) => e.id === cartValue.id).length > 0) {
-        // props.getcart({ ...cartValue, quantity: ++cartValue["quantity"] });
-        setCart([...cart, cartValue.quantity = ++cartValue["quantity"]]);
-        console.log("in if", cartValue);
-        console.log("in if", cart);
-        // console.log("in if", cartValue);
-      } else {
-        console.log("in else");
-        // props.getcart({ ...cartValue, quantity: cartValue["quantity"] + 0 });
-      }
+      // if (cart.filter((e) => e.id === cartValue.id).length > 0) {
+      //   // props.getcart({ ...cartValue, quantity: ++cartValue["quantity"] });
+      //   setCart([...cart, cartValue.quantity = ++cartValue["quantity"]]);
+      //   console.log("in if", cartValue);
+      //   console.log("in if", cart);
+      //   // console.log("in if", cartValue);
+      // } else {
+      //   console.log("in else");
+      //   // props.getcart({ ...cartValue, quantity: cartValue["quantity"] + 0 });
+      // }
       console.log(cartValue.quantity);
       // console.log(devicesArray.hasOwnProperty("id"));
       // console.log(devicesArray.indexOf(prodDetail));

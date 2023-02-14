@@ -4,6 +4,7 @@ import React, {useState} from 'react'
 export default function AddToCart(props) {
   const [isProductAdded, setIsProductAdded] = useState(false)
   function addToCart(prodDetail, updateCart) {
+    // console.log(prodDetail);
     props.getcart(prodDetail, isProductAdded);
     // console.log({ ...prodDetail, quantity: prodDetail["quantity"] + 1 });
     // console.log(prodDetail.id);
@@ -34,7 +35,8 @@ export default function AddToCart(props) {
   }
   return (
     <Button
-      variant="dark"
+      variant="success"
+      size="sm"
       data-incart={isProductAdded}
       onClick={() => addToCart(props.productDetails, props.updateCart)}
     >

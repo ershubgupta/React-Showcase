@@ -11,8 +11,8 @@ import {
   ToastHeader,
 } from "react-bootstrap";
 import Address from "./Address";
-import UserDetail from "./UserDetail";
-import OrderSummary from "./OrderSummary";
+import UserDetail from "./common/UserDetail";
+import OrderSummary from "./common/OrderSummary";
 
 export default function Cart(props) {
   const [productList, setProductList] = useState([]);
@@ -79,10 +79,10 @@ export default function Cart(props) {
                 </Col>
               ) : (
                 <>
-                  {productList.map((list) => (
+                  {productList.map((list, index) => (
                     <Col
                       sm={6}
-                      key={list.id}
+                      key={list.index}
                       style={box_shadown}
                       className="mb-3"
                     >

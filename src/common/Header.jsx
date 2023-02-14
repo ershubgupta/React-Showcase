@@ -10,13 +10,13 @@ export default function Header() {
           React App Showcase
         </Link>
         <Nav className="ml-auto">
-          <Link to="/github-cards📇" className="nav-link">
+          <Link to="/github-cards" className="nav-link">
             Github Card
           </Link>
-          <Link to="/shopping-cart🛒" className="nav-link">
+          <Link to="/shopping-cart" className="nav-link">
             Shopping Cart
           </Link>
-          <Link to="/todo-app📋" className="nav-link">
+          <Link to="/todo-app" className="nav-link">
             ToDo App
           </Link>
           <Link to="/meetup" className="nav-link">

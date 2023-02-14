@@ -20,22 +20,22 @@ function App() {
             <Col xs={12} className="my-4">
               <Switch>
                 <Route exact path="/" component={Home}/>
-                < Route path = "/github-cards📇"
+                <Route path = "/github-cards"
                 component = {
                   Github
                 }
                 />                
-                < Route path = "/shopping-cart🛒"
+                <Route path = "/shopping-cart"
                 component = {
                   ShoppingCart
                 }
                 />
-                < Route path = "/todo-app📋"
+                <Route path = "/todo-app"
                 component = {
                   ToDo
                 }
                 />
-                < Route path = "/meetup"
+                <Route path = "/meetup"
                 component = {
                   Meetup
                 }

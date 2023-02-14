@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import Loader from "../common/Loader";
-import ProductCard from "./ProductCard";
+import ProductCard from "./common/ProductCard";
 import { ProductSortingByPrice, FilterByCategory } from "./ProductFilter";
 import useFetch from "./Services/useFetch";
 

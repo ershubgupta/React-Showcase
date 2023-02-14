@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Form } from "react-bootstrap";
-import Loader from "../common/Loader";
+// import Loader from "../common/Loader";
 import useFetch from "./Services/useFetch";
 
 export function ProductSortingByPrice(props) {
@@ -23,8 +23,8 @@ export function ProductSortingByPrice(props) {
               onChange={onSortChange}
             >
               <option value="">None</option>
-              <option value="asc">High to Low</option>
-              <option value="desc">Low to High</option>
+              <option value="desc">High to Low</option>
+              <option value="asc">Low to High</option>
             </Form.Control>
           </Col>
         </Form.Row>
