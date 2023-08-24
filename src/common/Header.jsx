@@ -10,6 +10,7 @@ export default function Header() {
           React App Showcase
         </Link>
         <Nav className="ml-auto">
+          <a href="https://social-chat-frontend.vercel.app/social/" target="_blank" rel="noreferrer" className="nav-link">Social Chat</a>
           <Link to="/github-cards" className="nav-link">
             Github Card
           </Link>

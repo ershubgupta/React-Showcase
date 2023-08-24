@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Container, Jumbotron, Row } from "react-bootstrap";
+import { Col, Container, Jumbotron, Row, Badge } from "react-bootstrap";
 
 export default function Home() {
   return (
@@ -10,7 +10,27 @@ export default function Home() {
             <Col>
               <h1>Overview of React App Showcase</h1>
               <ul>
-                <li>
+                <li className="mb-3">
+                  <b>Social Chat:</b>
+                  <ul>
+                    <li>
+                      You can chat with any user, this app will enable you to do
+                      two way communication
+                    </li>
+                    <li>
+                      You will get Realtime User Status like online, typing,
+                      etc.
+                    </li>
+                    <li>
+                      Tech Stack: <Badge variant="info">MERN</Badge>{" "}
+                      <Badge variant="info">Socket.IO</Badge>{" "}
+                      <Badge variant="info">Tailwind CSS</Badge>{" "}
+                      <Badge variant="info">Vercel</Badge>{" "}
+                      <Badge variant="info">Heroku</Badge>{" "}
+                    </li>
+                  </ul>
+                </li>
+                <li className="mb-3">
                   <b>Github Card:</b>
                   <ul>
                     <li>
@@ -22,9 +42,15 @@ export default function Home() {
                       Error will come if we try to search user which is already
                       listed.
                     </li>
+                    <li>
+                      Tech Stack: <Badge variant="info">React</Badge>{" "}
+                      <Badge variant="info">GitHub APIs</Badge>{" "}
+                      <Badge variant="info">Bootstrap</Badge>{" "}
+                      <Badge variant="info">Vercel</Badge>{" "}
+                    </li>
                   </ul>
                 </li>
-                <li>
+                <li className="mb-3">
                   <b>Shopping Cart:</b>
                   <ul>
                     <li>
@@ -59,15 +85,23 @@ export default function Home() {
                         href="https://fakestoreapi.com/"
                         target="_blank"
                         rel="noreferrer"
+                        className=""
+                        variant="primary"
                       >
                         <i>fakestoreapi</i>
                       </a>
                       &nbsp;for allowing to use there api for free for learning
                       purpose.
                     </li>
+                    <li>
+                      Tech Stack: <Badge variant="info">React</Badge>{" "}
+                      <Badge variant="info">fakestoreapi</Badge>{" "}
+                      <Badge variant="info">Bootstrap</Badge>{" "}
+                      <Badge variant="info">Vercel</Badge>{" "}
+                    </li>
                   </ul>
                 </li>
-                <li>
+                <li className="mb-3">
                   <b>Todo App:</b>
                   <ul>
                     <li>
@@ -91,18 +125,30 @@ export default function Home() {
                       Moreover in List view user can see all the tasks that are
                       removed.
                     </li>
+                    <li>
+                      Tech Stack: <Badge variant="info">React</Badge>{" "}
+                      <Badge variant="info">Bootstrap</Badge>{" "}
+                      <Badge variant="info">Vercel</Badge>{" "}
+                    </li>
                   </ul>
                 </li>
-                <li>
+                <li className="mb-3">
                   <b>MeetUp:</b>
                   <ul>
                     <li>
-                      The Meetup page consists three pages, Home, Dashboard and Reports.
+                      The Meetup page consists three pages, Home, Dashboard and
+                      Reports.
                     </li>
                     <li>
-                      Home page has registration form to capture the user data and POST 
+                      Home page has registration form to capture the user data
+                      and POST
                     </li>
-                    <li></li>
+                    <li>
+                      Tech Stack: <Badge variant="info">React</Badge>{" "}
+                      <Badge variant="info">ChatJs</Badge>{" "}
+                      <Badge variant="info">Bootstrap</Badge>{" "}
+                      <Badge variant="info">Vercel</Badge>{" "}
+                    </li>
                   </ul>
                 </li>
               </ul>
